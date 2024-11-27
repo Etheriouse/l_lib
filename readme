@@ -1,0 +1,27 @@
+# to compile with dll
+
+
+gcc -o bin/main.exe src/main.c -Iinclude -Llib -lmylib
+
+-L folder where is lib
+
+-an_lib a specific lib to import
+
+# to create a dll with .c
+
+gcc -shared -o lib/mylib.dll src/mylib.c -Iinclude -Wl,--out-implib,lib/libmylib.a
+
+-shared for say is a dll
+
+-o the name of dll
+
+-I for include
+
+-Wl,--out-implib,mylib.a cree le fichier d'import .a
+
+# architecture
+
+in src the .c file
+in include the .h file
+in lib the .dll and .a
+in bin the .exe or executable

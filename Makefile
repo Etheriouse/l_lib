@@ -1,8 +1,8 @@
-
+output = main
 include = -I./include
 
-main: init objet/merge.o objet/quick.o objet/insert.o objet/tas.o objet/introsort.o objet/selection.o objet/bubble.o objet/bogo.o objet/comb.o objet/main.o
-	gcc -o bin/main objet/*.o -Wall $(include)
+main: init objet/merge.o objet/quick.o objet/insert.o objet/tas.o objet/introsort.o objet/selection.o objet/bubble.o objet/bogo.o objet/comb.o objet/main.o objet/function.o
+	gcc -o bin/$(output) objet/*.o -Wall $(include)
 
 init:
 	mkdir -p objet/
@@ -38,8 +38,14 @@ objet/bogo.o: src/bogo.c
 objet/comb.o: src/comb.c
 	gcc -o objet/comb.o src/comb.c -c -Wall $(include)
 
-run:
-	./bin/main
+objet/function.o: src/function.c
+	gcc -o objet/function.o src/function.c -c -Wall $(include)
+
+run: main
+	./bin/$(output)
+
+valgrind: main
+	valgrind ./bin/$(output)
 
 clear:
 	rm -rf objet/

@@ -5,12 +5,12 @@ int *merge_array(int *left, int size_l, int *right, int size_r);
 
 int *merge_sort(int *arr, int size) {
 
-    if(size < 1) {
+    if(size <= 1) {
         return arr;
     }
 
     int mid = size/2;
-    
+
     int *left = (int*) malloc(sizeof(int)*mid);
     int *right = (int*) malloc(sizeof(int)*(size-mid));
 
@@ -21,13 +21,20 @@ int *merge_sort(int *arr, int size) {
     }
 
     for(i = mid; i<size; i++) {
-        right[i] = arr[i];
+        right[i-mid] = arr[i];
     }
 
-    //free(arr);
+    free(arr);
 
-    arr = merge_array(merge_sort(left, mid), mid, merge_sort(right, (size-mid)), (size-mid));
-    return arr;
+    left = merge_sort(left, mid);
+    right = merge_sort(right, (size-mid));
+
+    int *sort = merge_array(left, mid, right, (size-mid));
+
+    free(left);
+    free(right);
+
+    return sort;
 
 }
 
@@ -58,8 +65,6 @@ int *merge_array(int *left, int size_l, int *right, int size_r) {
         j++;
         n++;
     }
-    
-    free(left);
-    free(right);
+
     return arr;
 }

@@ -1,0 +1,1 @@
+int *merge_sort(int *arr, int size);

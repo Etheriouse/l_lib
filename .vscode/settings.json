@@ -1,6 +1,17 @@
 {
     "files.associations": {
         "*.embeddedhtml": "html",
-        "merge.h": "c"
+        "merge.h": "c",
+        "stdio.h": "c",
+        "stdlib.h": "c",
+        "function.h": "c",
+        "selection.h": "c",
+        "insertion.h": "c",
+        "time.h": "c",
+        "bubble.h": "c",
+        "comb.h": "c",
+        "heap.h": "c",
+        "quick.h": "c",
+        "math.h": "c"
     }
 }

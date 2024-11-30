@@ -2,10 +2,20 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "merge.h"
 #include "function.h"
 
-#define length 1000
+#include "merge.h"
+#include "insertion.h"
+#include "selection.h"
+#include "bogo.h"
+#include "bubble.h"
+#include "comb.h"
+#include "heap.h"
+#include "quick.h"
+#include "introsort.h"
+
+
+#define length 14
 
 int main(int argc, char const *argv[])
 {
@@ -15,19 +25,17 @@ int main(int argc, char const *argv[])
     int array_origin[length];
 
     for(int i = 0; i<length; i++) {
-        array_origin[i] = rand()%100;
+        array_origin[i] = rand()%10;
     }
 
     int *array = clone_arr(array_origin, length);
 
     print_arr(array_origin, length);
 
-    array = merge_sort(array, length);
+    array = intro_sort(array, length);
 
     print_arr(array, length);
 
     free(array);
-    //free(sorted_array);
-
     return 0;
 }

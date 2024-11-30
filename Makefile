@@ -1,7 +1,7 @@
 output = main
-include = -I./include
+include = -I./include -lm
 
-main: init objet/merge.o objet/quick.o objet/insert.o objet/tas.o objet/introsort.o objet/selection.o objet/bubble.o objet/bogo.o objet/comb.o objet/main.o objet/function.o
+main: init objet/merge.o objet/quick.o objet/insertion.o objet/heap.o objet/introsort.o objet/selection.o objet/bubble.o objet/bogo.o objet/comb.o objet/main.o objet/function.o
 	gcc -o bin/$(output) objet/*.o -Wall $(include)
 
 init:
@@ -17,11 +17,11 @@ objet/merge.o: src/merge.c
 objet/quick.o: src/quick.c
 	gcc -o objet/quick.o src/quick.c -c -Wall $(include)
 
-objet/insert.o: src/insert.c
-	gcc -o objet/insert.o src/insert.c -c -Wall $(include)
+objet/insertion.o: src/insertion.c
+	gcc -o objet/insertion.o src/insertion.c -c -Wall $(include)
 
-objet/tas.o: src/tas.c
-	gcc -o objet/tas.o src/tas.c -c -Wall $(include)
+objet/heap.o: src/heap.c
+	gcc -o objet/heap.o src/heap.c -c -Wall $(include)
 
 objet/introsort.o: src/introsort.c
 	gcc -o objet/introsort.o src/introsort.c -c -Wall $(include)

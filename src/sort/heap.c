@@ -1,10 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "function.h"
-
-void swap(int *arr, int i, int j);
 void heapify(int *arr, int node, int size);
+
+void __swap(int *arr, int i, int j)
+{
+    int temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+}
 
 int *heap_sort(int *arr, int size) {
     for(int i = (size/2)-1; i>=0; i--) {
@@ -12,7 +16,7 @@ int *heap_sort(int *arr, int size) {
     }
 
     for(int i = size-1; i>0; i--) {
-        swap(arr, 0, i);
+        __swap(arr, 0, i);
         heapify(arr, i, 0);
     }
     return arr;
@@ -31,7 +35,7 @@ void heapify(int *arr, int size, int root) {
     }
 
     if(l != root) {
-        swap(arr, root, l);
+        __swap(arr, root, l);
         heapify(arr, size, l);
     }
 }

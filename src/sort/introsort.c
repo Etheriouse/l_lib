@@ -2,14 +2,18 @@
 #include <stdlib.h>
 #include <math.h>
 
-#include "function.h"
-
 int intro_partition(int *arr, int low, int high);
 void intro_heapify(int *arr, int size, int root);
 void intro_heap_sort(int *arr, int size);
 void intro_insertion_sort(int *arr, int low, int high);
 void _intro_sort(int *arr, int low, int high, int deap_max);
 
+void _swap(int *arr, int i, int j)
+{
+    int temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+}
 
 int *intro_sort(int *arr, int size) {
     double log_n = log2(size);
@@ -43,10 +47,10 @@ int intro_partition(int *arr, int low, int high) {
     for (int j = low; j < high; j++) {
         if (arr[j] < pivot) {
             i++;
-            swap(arr, i, j);
+            _swap(arr, i, j);
         }
     }
-    swap(arr, i+1, high);
+    _swap(arr, i+1, high);
     return i + 1;
 }
 
@@ -62,7 +66,7 @@ void intro_heapify(int *arr, int size, int root) {
         l = d;
     }
     if (l != root) {
-        swap(arr, root, l);
+        _swap(arr, root, l);
         intro_heapify(arr, size, l);
     }
 }
@@ -74,7 +78,7 @@ void intro_heap_sort(int *arr, int size) {
     }
 
     for (int i = size - 1; i > 0; i--) {
-        swap(arr, 0 , i);
+        _swap(arr, 0 , i);
         intro_heapify(arr, i, 0);
     }
 }

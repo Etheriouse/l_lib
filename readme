@@ -1,6 +1,5 @@
 # to compile with dll
 
-
 gcc -o bin/main.exe src/main.c -Iinclude -Llib -lmylib
 
 -L folder where is lib
